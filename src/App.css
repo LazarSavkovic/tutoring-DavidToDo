@@ -1,0 +1,51 @@
+body {
+  background-color: #373742;
+}
+
+.container {
+  width: 500px;
+  margin: 100px auto;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #25273c;
+  color: white;
+}
+
+.header {
+  width: 200px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #222228;
+}
+
+.buttonClear {
+  display: flex;
+  justify-content: center;
+}
+
+.containerMid {
+  display: flex;
+  justify-content: center;
+}
+
+.inputValue {
+  width: 200px;
+  height: 20px;
+}
+
+.buttonAdd {
+  background-color: #2e67dfcd;
+  color: #eaf9ee;
+  border-radius: 3px;
+  margin-left: 18px;
+  height: 30px;
+}
+
+.buttonCleardiv {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 50px;
+}
