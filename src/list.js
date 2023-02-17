@@ -1,43 +1,38 @@
 import React from 'react';
 import './App.css';
+import Todo from './todo.js';
 
 // render function where i map over the Todo array to create list items in an unorder list
 function ListTodos(props) {
-  const { todo, setTodo } = props;
+  const { todos, setTodos, filterettodos } = props;
 
   // delete selcted value by index
   const deleteTodo = (index) => {
-    const newTodo = [...todo];
+    const newTodo = [...todos];
     newTodo.splice(index, 1);
-    setTodo(newTodo);
+    setTodos(newTodo);
   };
 
   // change the color after checkbox is checked
   const handleCheckboxClick = (index) => {
-    const newTodo = [...todo];
+    const newTodo = [...todos];
     newTodo[index].isChecked = !newTodo[index].isChecked;
-    setTodo(newTodo);
+    setTodos(newTodo);
   };
+
   return (
-    <div className="containerMid">
+    <div className="todolist">
       <ul>
-        {todo.map((item, index) => (
-          <li
-            key={item + index}
-            style={{
-              color: item.isChecked ? 'red' : 'white',
-              textDecoration: item.isChecked ? 'line-through' : 'none',
-            }}
-            className="todo"
-          >
-            <input
-              type="checkbox"
-              onClick={() => handleCheckboxClick(index)}
-              defaultChecked={item.isChecked}
-            />
-            {item.value}
-            <button onClick={() => deleteTodo(index)}>Delete</button>
-          </li>
+        {filterettodos.map((item, index) => (
+          <Todo
+            todo={item}
+            index={index}
+            handleCheckboxClick={handleCheckboxClick}
+            deleteTodo={deleteTodo}
+            key={item.id}
+            todos={todos}
+            setTodos={setTodos}
+          />
         ))}
       </ul>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import InputTodos from './input.js';
 import ListTodos from './list.js';
@@ -7,23 +7,43 @@ import ClearButton from './clearbutton.js';
 
 function App() {
   // create usestates for todos
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState('All');
+  const [filterettodos, setFilterettodos] = useState([]);
+
+  useEffect(() => {
+    switch (status) {
+      case 'All':
+        setFilterettodos(todos);
+        break;
+      case 'Active':
+        setFilterettodos(todos.filter((todos) => !todos.isChecked));
+        break;
+      case 'Completed':
+        setFilterettodos(todos.filter((todos) => todos.isChecked));
+        break;
+    }
+  }, [todos, status]);
 
   // render all components i have in diffrent files
   return (
     <div className="App">
       <div className="container">
         <div className="header">
-          <InputTodos todo={todo} setTodo={setTodo} />
+          <InputTodos todos={todos} setTodos={setTodos} />
         </div>
         <div className="containerMid">
-          <ListTodos todo={todo} setTodo={setTodo} />
+          <ListTodos
+            todos={todos}
+            setTodo={setTodos}
+            filterettodos={filterettodos}
+          />
         </div>
         <div className="footer">
-          <TodoCounter todo={todo} />
+          <TodoCounter todos={todos} status={status} setStatus={setStatus} />
         </div>
         <div className="buttonCleardiv">
-          <ClearButton todo={todo} setTodo={setTodo} />
+          <ClearButton setTodos={setTodos} todos={todos} />
         </div>
       </div>
     </div>

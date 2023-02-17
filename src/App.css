@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #373742;
 }
@@ -9,10 +13,14 @@ body {
   text-align: center;
   background-color: #25273c;
   color: white;
+  align-items: center;
 }
 
 .header {
-  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
 }
 .footer {
   display: flex;
@@ -21,11 +29,6 @@ body {
 }
 
 .buttonClear {
-  display: flex;
-  justify-content: center;
-}
-
-.containerMid {
   display: flex;
   justify-content: center;
 }
@@ -48,4 +51,8 @@ body {
   margin-bottom: 20px;
   width: 100px;
   height: 50px;
+}
+
+.todolist {
+  width: 100%;
 }

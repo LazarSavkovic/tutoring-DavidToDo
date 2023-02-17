@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
+import './input.css';
+
+// this is the component with the input bar and the add button
+//Props are 'todo' passed from app.js
 
 function InputTodos(props) {
-  const { todo, setTodo } = props;
+  const { todos, setTodos } = props;
   const [value, setValue] = useState('');
   // put input values into todolist
   const addTodo = (e) => {
     e.preventDefault();
-    setTodo([...todo, { value: value, isChecked: false }]);
+    setTodos([
+      ...todos,
+      { value: value, isChecked: false, id: Math.floor(Math.random() * 10000) },
+    ]);
     setValue('');
   };
 
@@ -17,9 +24,9 @@ function InputTodos(props) {
   };
 
   return (
-    <div className="container">
+    <div>
       <h1>Todo List</h1>
-      <div className="header">
+      <div>
         <input
           type="text"
           value={value}

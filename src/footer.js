@@ -11,7 +11,7 @@ function counttodos(todo) {
 
 // use effect to show whenever the array will change from completed todos to not completed
 function TodoCounter(props) {
-  const { todo } = props;
+  const { todos, status, setStatus } = props;
   const [completed, setCompleted] = useState(0);
   const [notCompleted, setNotCompleted] = useState(0);
 
@@ -19,16 +19,39 @@ function TodoCounter(props) {
 
   //with the useeffect hook set the todos on completed or not completed if sth changes on the todos
   useEffect(() => {
-    const { completed, notCompleted } = counttodos(todo);
+    const { completed, notCompleted } = counttodos(todos);
     setCompleted(completed);
     setNotCompleted(notCompleted);
-  }, [todo]);
+  }, [todos]);
 
+  function changeStatus(string) {
+    setStatus(string);
+  }
+  // return all the todos as completed or not completed
+  // create buttons to set the status of the todos wich shoudl be showed
   return (
     <div>
       <p>Completed: {completed}</p>
       <p>Not Completed: {notCompleted}</p>
-      <p>Todos: {todo.length} </p>
+      <p>Todos: {todos.length} </p>
+
+      <div>
+        <button disabled={status == 'All'} onClick={() => changeStatus('All')}>
+          All
+        </button>
+        <button
+          disabled={status == 'Active'}
+          onClick={() => changeStatus('Active')}
+        >
+          Active
+        </button>
+        <button
+          disabled={status == 'Completed'}
+          onClick={() => changeStatus('Completed')}
+        >
+          Completed
+        </button>
+      </div>
     </div>
   );
 }
