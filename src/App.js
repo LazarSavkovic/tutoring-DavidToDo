@@ -40,10 +40,7 @@ function App() {
           />
         </div>
         <div className="footer">
-          <TodoCounter todos={todos} status={status} setStatus={setStatus} />
-        </div>
-        <div className="buttonCleardiv">
-          <ClearButton setTodos={setTodos} todos={todos} />
+          <TodoCounter todos={todos} setTodos={setTodos} status={status} setStatus={setStatus} />
         </div>
       </div>
     </div>

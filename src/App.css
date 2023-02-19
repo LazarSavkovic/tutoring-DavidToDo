@@ -14,18 +14,55 @@ body {
   background-color: #25273c;
   color: white;
   align-items: center;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* border: red solid 2px; */
+}
+
+.containerMid {
+min-height: 250px;
+width: 100%;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   /* border: 2px solid red; */
 }
 .footer {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   background-color: #222228;
+  /* border: 2px solid blue; */
+}
+
+.TodoCounter {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  /* border: 2px solid green; */
+} 
+
+.CounterDisplay {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 2px solid red; */
+  width: 100%;
+}
+
+.CounterBtns {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .buttonClear {
