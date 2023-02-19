@@ -7,10 +7,10 @@ function ListTodos(props) {
   const { todos, setTodos, filterettodos } = props;
 
   // delete selcted value by index
-  const deleteTodo = (index) => {
-    const newTodo = [...todos];
-    newTodo.splice(index, 1);
-    setTodos(newTodo);
+  const deleteTodo = (id) => {
+    console.log(id)
+    console.log(todos)
+    setTodos(todos.filter(todo => todo.id !== id))
   };
 
   // change the color after checkbox is checked

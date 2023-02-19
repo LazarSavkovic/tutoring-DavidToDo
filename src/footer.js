@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import './App.css';
 
-function counttodos(todo) {
+function counttodos(todoList) {
   return {
-    completed: todo.filter((todo) => todo.isChecked).length,
-    notCompleted: todo.filter((todo) => !todo.isChecked).length,
+    completed: (todoList.filter(todo => todo.isChecked)).length,
+    notCompleted: (todoList.filter(todo => !todo.isChecked)).length,
   };
 }
 
@@ -36,7 +36,7 @@ function TodoCounter(props) {
       <p>Todos: {todos.length} </p>
 
       <div>
-        <button disabled={status == 'All'} onClick={() => changeStatus('All')}>
+        <button disabled={status === 'All'} onClick={() => changeStatus('All')}>
           All
         </button>
         <button

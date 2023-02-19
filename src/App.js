@@ -35,7 +35,7 @@ function App() {
         <div className="containerMid">
           <ListTodos
             todos={todos}
-            setTodo={setTodos}
+            setTodos={setTodos}
             filterettodos={filterettodos}
           />
         </div>

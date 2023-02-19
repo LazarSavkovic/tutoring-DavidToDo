@@ -27,15 +27,17 @@ function InputTodos(props) {
     <div>
       <h1>Todo List</h1>
       <div>
+        <form onSubmit={addTodo}>
         <input
           type="text"
           value={value}
           onChange={handleChange}
           className="inputValue"
         />
-        <button onClick={addTodo} className="buttonAdd">
+        <button type='submit' className="buttonAdd">
           Add Todo
         </button>
+        </form>
       </div>
     </div>
   );

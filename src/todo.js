@@ -17,13 +17,18 @@ function Todo(props) {
     setEditing(!editing);
   }
 
-  function saveValue() {
-    const filteredtodos = todos.filter((item) => {
-      if (item.id !== todo.id) {
-        return item;
-      }
-    });
-    console.log(filteredtodos);
+  function saveValue(e) {
+    e.preventDefault()
+    // const filteredtodos = todos.filter((item) => item.id !== todo.id
+    // );
+    // setTodos(...filteredtodos, {value: input, isChecked: todo.isChecked, id: todo.id })
+
+    setTodos(todos.map(item => {
+      if (item.id === todo.id) return {value: input, isChecked: todo.isChecked, id: todo.id}
+      else return item
+    }))
+
+    setEditing(false)
   }
 
   return (
@@ -38,25 +43,25 @@ function Todo(props) {
           {todo.value}
         </span>
       ) : (
-        <form>
+        <form onSubmit={saveValue} className='todoForm'>
           <input
             type="text"
             onChange={(e) => setInput(e.target.value)}
             value={input}
           ></input>
-          <button onClick={() => saveValue()}>
+          <button  type='submit'>
             <BiSave />
           </button>
         </form>
       )}
 
-      <button onClick={() => deleteTodo(index)}>
+      <button onClick={() => deleteTodo(todo.id)}>
         <BiTrash />
       </button>
       <button onClick={() => handleCheckboxClick(index)}>
         <BiCheck />
       </button>
-      <button onClick={() => toggleInput()}>
+      <button onClick={toggleInput}>
         <BiPencil />
       </button>
     </li>
